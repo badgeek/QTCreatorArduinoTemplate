@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**************************************************************************
+**
+** This file is part of Qt Creator
+**
+** Copyright (c) 2011 Nokia Corporation and/or its subsidiary(-ies).
+**
+** Contact: Nokia Corporation (info@qt.nokia.com)
+**
+**
+** GNU Lesser General Public License Usage
+**
+** This file may be used under the terms of the GNU Lesser General Public
+** License version 2.1 as published by the Free Software Foundation and
+** appearing in the file LICENSE.LGPL included in the packaging of this file.
+** Please review the following information to ensure the GNU Lesser General
+** Public License version 2.1 requirements will be met:
+** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Nokia gives you certain additional
+** rights. These rights are described in the Nokia Qt LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+** Other Usage
+**
+** Alternatively, this file may be used in accordance with the terms and
+** conditions contained in a signed written agreement between you and Nokia.
+**
+** If you have questions regarding the use of this file, please contact
+** Nokia at qt-info@nokia.com.
+**
+**************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="" firstpage="10"
+        id="A.Atmega" category="B.AVR">
+    <icon>atmega168.jpg</icon>
+    <description>Creates an ATmega project based on the makefile from the arduino-mk package. You can use the arduino librairy</description>
+    <displayname>Atmega Project</displayname>;
+    <displaycategory>AVR</displaycategory>
+    <files>
+        <file source="project.creator"  target="%ProjectName%.creator" openproject="true"/>
+<!--        <file source="project.creator.user"  target="%ProjectName%.creator.user"/> -->
+        <file source="project.includes" target="%ProjectName%.includes"/>
+        <file source="project.config"   target="%ProjectName%.config"/>
+        <file source="project.files"    target="%ProjectName%.files"/>
+        
+        <file source="src/main.cpp"    target="src/main.cpp" openeditor="true"/>
+        <file source="src/makefile"    target="src/makefile"/>        
+    </files>
+    <!-- Create a 2nd wizard page with parameters -->
+    <fieldpagetitle>Project Parameters</fieldpagetitle>
+    <fields>
+
+        <field mandatory="false" name="ARDUINO_DIR">
+            <fieldcontrol class="QLineEdit" validator='^[^"]+$'
+                          defaulttext="/usr/share/arduino" />
+            <fielddescription>Arduino path:</fielddescription>
+        </field>
+     	<field mandatory="true" name="CPU_FREQUENCY">
+            <fieldcontrol class="QLineEdit" validator='^[^"]+$'
+                          defaulttext="20000000" />
+            <fielddescription>CPU frquency [Hz]:</fielddescription>
+        </field>
+
+        <field mandatory="false" name="ARDUINO_LIBS">
+            <fieldcontrol class="QLineEdit" validator='^[^"]+$'
+                          defaulttext=" " />
+            <fielddescription>Libraries:</fielddescription>
+        </field>
+
+    </fields>
+</wizard>

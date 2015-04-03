@@ -1,0 +1,70 @@
+philippe.lucidarme@univ-angers.fr
+http://5lair.free.fr
+
+This template has been tested on the following versions :
+
+Ubuntu LTS 12.04
+Qt-Creartor  2.4.1
+arduino-core 1.0
+arduino-mk 0.8-1
+
+________________________________________________________________________________
+
+How to install Qt Creator Arduino Project wizard:
+
+1- Install Qt-creator, arduino-core and arduino-mk if it's not already done
+
+	> sudo apt-get install qtcreator
+	> sudo apt-get install arduino-core 
+	> sudo apt-get install arduino-mk
+
+2- Modify the file Arduino.mk (line 218)
+
+	> sudo gedit /usr/share/arduino/Arduino.mk 
+
+	Replace 
+		PARSE_BOARD = ard-parse-boards --boards_txt=$(BOARDS_TXT)
+	by 
+		PARSE_BOARD = $(ARDUINO_DIR)/ard-parse-boards --boards_txt=$(BOARDS_TXT)
+
+3- Copy folder "atmega" to /usr/share/qtcreator/templates/wizards :
+	
+        > sudo cp -R atmega/ /usr/share/qtcreator/templates/wizards/
+
+4- Give the read-access right for any user to the folder
+
+	> sudo chmod -R 755 /usr/share/qtcreator/templates/wizards/atmega/
+
+5- Copy the file 60-avrisp.rules into /etc/udev/rules.d :
+
+	> sudo cp 60-avrisp.rules /etc/udev/rules.d/
+
+6. Restart USB services:
+
+	> sudo service udev restart
+
+7. Plug the AVRISPmkii device (or unplug and replug)
+
+8. Add the current user to dialout (replace username by your log name)
+
+	> sudo usermod -a -G dialout username
+
+9. Close your session to apply changes from previous step
+
+
+10. Launch Qt and change the terminal in the menu Tools > Options > Terminal :
+
+	Replace "x-terminal-emulator -e" by "xterm -e"
+
+________________________________________________________________________________
+
+How to use:
+
+Open Qt Creator, file / New_File_or_Project
+
+Select "AVR" & "Arduino Project"
+
+Go trought the wizard.
+________________________________________________________________________________
+
+
