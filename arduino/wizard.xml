@@ -51,16 +51,16 @@ leave room for the Qt 4 target page.
         <file source="project.config"   target="%ProjectName%.config"/>
         <file source="project.files"    target="%ProjectName%.files"/>
         
-        <file source="src/main.cpp"    target="src/main.cpp" openeditor="true"/>
-        <file source="src/Makefile"    target="src/Makefile"/>        
+        <file source="src/main.cpp"    target="%ProjectName%/%ProjectName%.ino" openeditor="true"/>
+        <file source="src/Makefile"    target="%ProjectName%/Makefile"/>        
     </files>
     <!-- Create a 2nd wizard page with parameters -->
     <fieldpagetitle>Project Parameters</fieldpagetitle>
     <fields>
         <field mandatory="true" name="ARDUINO_DIR">
             <fieldcontrol class="QLineEdit" validator='^[^"]+$'
-                          defaulttext="/usr/share/arduino/" />
-            <fielddescription>Arduino Path:</fielddescription>
+                          defaulttext="/Applications/Development/Arduino1.5.8.app" />
+            <fielddescription>Arduino App Path:</fielddescription>
         </field>
 
 
