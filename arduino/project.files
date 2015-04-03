@@ -1,2 +1,2 @@
-src/Makefile
-src/main.cpp
+_%ProjectName%/Makefile
+_%ProjectName%/_%ProjectName%.ino

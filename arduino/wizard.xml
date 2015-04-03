@@ -51,8 +51,8 @@ leave room for the Qt 4 target page.
         <file source="project.config"   target="%ProjectName%.config"/>
         <file source="project.files"    target="%ProjectName%.files"/>
         
-        <file source="src/main.cpp"    target="%ProjectName%/%ProjectName%.ino" openeditor="true"/>
-        <file source="src/Makefile"    target="%ProjectName%/Makefile"/>        
+        <file source="src/main.cpp"    target="_%ProjectName%/_%ProjectName%.ino" openeditor="true"/>
+        <file source="src/Makefile"    target="_%ProjectName%/Makefile"/>        
     </files>
     <!-- Create a 2nd wizard page with parameters -->
     <fieldpagetitle>Project Parameters</fieldpagetitle>
